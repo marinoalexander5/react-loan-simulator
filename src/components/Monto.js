@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "@material-ui/core/Slider";
-import { createMuiTheme } from "@material-ui/core/styles";
 import { Row, Col } from "react-bootstrap";
 import "../App.css";
 
@@ -17,6 +16,21 @@ const montoMarks = [
 ];
 
 const MontoSlider = (props) => {
+
+  const [monto, setMonto] = useState(3);
+  const handleMontoSliderChange = (event, newMonto) => {
+    setMonto(newMonto);
+  };
+  
+  const handleMontoInputChange = (event) => {
+      setMonto(event.target.value);
+    };
+
+  useEffect(() => {
+    props.montoChanged(monto);
+  }, [monto])
+
+
   return (
     <Row className="align-items-center mt-5">
       <Col xs={6}>
@@ -28,6 +42,8 @@ const MontoSlider = (props) => {
           className="bg-danger recuadro fw-600"
           type="number"
           value={props.monto}
+          min={5000}
+          max={50000}
 
           // onChange={handleMontoInputChange}
           onChange={(e) => props.onChange(e.target.value)}

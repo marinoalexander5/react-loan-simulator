@@ -28,38 +28,33 @@ const muiTheme = createMuiTheme({
 
 function App() {
 
-  const [monto, setMonto] = useState(5000);
-  const [plazo, setPlazo] = useState(3);
   const [cuotaFija, setCuotaFija] = useState(0)
 
-  useEffect(() => {
+  const plazoChanged = (plazo) => {
     const cuota = monto * 1.9798 / plazo;
-    // metodo toFixed redonde a 2 decimales
     setCuotaFija(cuota.toFixed(2));
-  }, [monto, plazo])
+  }
 
-  const handleMontoSliderChange = (event, newMonto) => {
-    setMonto(newMonto);
-  };
-  
-  const handleMontoInputChange = (event) => {
-      setMonto(event.target.value);
-    };
+  const montoChanged = (monto) => {
+    const cuota = monto * 1.9798 / plazo;
+    setCuotaFija(cuota.toFixed(2));
+  }
+
 
   return (
     <Container className="bg-dark">
-      <Col xs={{ span: 6, offset: 3 }}>
+      <Col xs={{ span: 8, offset: 2 }}>
         <div className="bg-danger mt-5 p-5 mx-auto border border-light rounded">
           <Row className="justify-content-center mb-4">
-            <h1 className="fw-600">Simulá tu crédito</h1>
+            <h1 className="fw-800">Simulá tu crédito</h1>
           </Row>
           <ThemeProvider theme={muiTheme}>
-            <Monto monto={monto} onChange={(val) => console.log(val)}/>
-          <Plazo />
+            <Monto montoChanged={montoChanged} />
+            <Plazo plazoChanged={plazoChanged} />
           </ThemeProvider>
-          <Row>
+          <Row className="border border-ligth my-4">
             <Col className="cuota-fija text-white fw-600 align-self-center">CUOTA FIJA POR MES</Col>
-            <Col className="cuota">$ {cuotaFija}</Col>
+            <Col className="cuota text-right">$ {cuotaFija}</Col>
           </Row>
           <Row>
             <Col xs={6}>
