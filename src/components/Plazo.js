@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Slider from "@material-ui/core/Slider";
 import { Row, Col } from "react-bootstrap";
+import "../App.css";
 
 // Etiquetas de slider
 const plazoMarks = [
@@ -15,19 +16,6 @@ const plazoMarks = [
 ];
 
 const PlazoSlider = (props) => {
-
-  const [plazo, setPlazo] = useState(3);
-  const handlePlazoSliderChange = (event, newPlazo) => {
-    setPlazo(newPlazo);
-  };
-  
-  const handlePlazoInputChange = (event) => {
-      setPlazo(event.target.value);
-    };
-
-  useEffect(() => {
-    props.plazoChanged(plazo);
-  }, [plazo])
     
   return (
     <Row className="align-items-center mt-5">
@@ -36,20 +24,20 @@ const PlazoSlider = (props) => {
       </Col>
       <Col className="align-self-right fw-600" xs={{ span:4, offset:2 }}>
         <input
-          className="bg-danger recuadro fw-600 ml-3"
+          className="bg-danger recuadro fw-600 w-150"
           type="number"
-          value={plazo}
+          value={props.plazo}
           min={3}
           max={24}
-          onChange={handlePlazoInputChange}
+          onChange={(e) => {props.handlePlazoInputChange(e)}}
         ></input>
       </Col>
       <Slider
-        value={plazo}
+        value={props.plazo}
         min={3}
         max={24}
         step={1}
-        onChange={handlePlazoSliderChange}
+        onChange={(event, newPlazo) => {props.handlePlazoSliderChange(event, newPlazo)}}
         marks={plazoMarks}
       />
     </Row>

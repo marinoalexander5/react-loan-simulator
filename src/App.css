@@ -29,8 +29,18 @@ html{
 
 .recuadro {
     border: 2px solid floralwhite;
-    width: 80px;
     border-radius: 5px;
-    text-align: right;
+    text-align: center;
 }
 
+.w-150{
+    width: 150px;
+}
+
+input {
+    border:none;
+}
+
+input:focus {
+    outline: none
+}
