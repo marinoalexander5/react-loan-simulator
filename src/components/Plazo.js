@@ -36,6 +36,7 @@ const PlazoSlider = (props) => {
         value={props.plazo}
         min={3}
         max={24}
+        // step obliga a variar el valor de manera discreta en lugar de continua
         step={1}
         onChange={(event, newPlazo) => {props.handlePlazoSliderChange(event, newPlazo)}}
         marks={plazoMarks}

@@ -37,26 +37,32 @@ function App() {
   const [plazo, setPlazo] = useState(3);
   const [cuotaFija, setCuotaFija] = useState(null);
 
+  // callback para Slider en componente Monto
   const handleMontoSliderChange = (event, newMonto) => {
     setMonto(newMonto);
   };
 
+  // callback para input en componente Monto
   const handleMontoInputChange = (event) => {
     setMonto(event.target.value);
   };
   
+  // callback para Slider en componente Plazo
   const handlePlazoSliderChange = (event, newPlazo) => {
     setPlazo(newPlazo);
   };
 
+  // callback para input en componente Plazo
   const handlePlazoInputChange = (event) => {
     setPlazo(event.target.value);
   };
 
+  // Calcular cuotas cada vez que cambian los valores de "monto" o "plazo" 
   useEffect(() => {
     // Validacion simple para evitar errores por valores fuera de rango permitido
     if( (monto >= 5000 && monto <= 50000 ) && (plazo >= 3 && plazo <= 24)) {
       const cuota = (monto * 1.9798) / plazo;
+      // formateo moneda local
       const cuotaARS = formatter.format(cuota);
       setCuotaFija(cuotaARS);
     }
