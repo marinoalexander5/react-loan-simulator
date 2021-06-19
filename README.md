@@ -1,3 +1,16 @@
+# React Loan Simulator
+
+### Dependencies:
+- @material-ui/core: 4.11.4 
+- bootstrap: 4.1.1
+- react-bootstrap: 1.6.1
+
+
+
+https://user-images.githubusercontent.com/14629695/122644738-27e3d000-d0ed-11eb-82b8-34f3de964700.mp4
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
